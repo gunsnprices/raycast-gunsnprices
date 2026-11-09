@@ -1,14 +1,15 @@
-import { Action, ActionPanel, Icon, Keyboard, List } from "@raycast/api";
+import { Action, ActionPanel, Icon, Keyboard, LaunchProps, List } from "@raycast/api";
 import { useMemo, useState } from "react";
 import { caliberMarkdown, searchCalibers } from "./lib/calibers.ts";
 
-export default function Command() {
-  const [query, setQuery] = useState("");
+export default function Command(props: LaunchProps) {
+  const [query, setQuery] = useState(props.fallbackText ?? "");
   const results = useMemo(() => searchCalibers(query), [query]);
 
   return (
     <List
       filtering={false}
+      searchText={query}
       onSearchTextChange={setQuery}
       searchBarPlaceholder="Search calibers, e.g. 9mm Luger, 300 BLK or 12 GA"
       isShowingDetail={results.length > 0}
