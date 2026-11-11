@@ -18,11 +18,7 @@ function ParsedDetail(props: { title: string; price?: string }) {
       actions={
         <ActionPanel>
           <Action.CopyToClipboard title="Copy Specs" content={fieldsTable(parsed)} />
-          <Action.CopyToClipboard
-            title="Copy as JSON"
-            content={listingJson(parsed)}
-            shortcut={Keyboard.Shortcut.Common.Copy}
-          />
+          <Action.CopyToClipboard title="Copy as JSON" content={listingJson(parsed)} />
           {caliber ? <Action.CopyToClipboard title="Copy Caliber Name" content={caliber.name} /> : null}
           {caliber?.url ? (
             <Action.OpenInBrowser

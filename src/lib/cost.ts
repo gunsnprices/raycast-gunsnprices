@@ -35,8 +35,9 @@ export function computeCost(priceText: string, roundsText: string): CostResult |
   return { price, rounds, roundsFrom, perRound: price / rounds };
 }
 
+/** Full precision, minus binary floating-point noise (0.30000000000000004 → 0.3, 1/3 → 0.333333333333333). */
 function exact(n: number): string {
-  return String(Math.round(n * 1e6) / 1e6);
+  return String(Number(n.toPrecision(15)));
 }
 
 /** The result in the units people compare ammo prices in. */

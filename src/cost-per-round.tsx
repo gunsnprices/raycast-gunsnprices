@@ -14,7 +14,7 @@ export default function Command(props: LaunchProps<{ arguments: Arguments.CostPe
 
   const summary = costSummary(result);
   return (
-    <List navigationTitle={summary} searchBarPlaceholder="Filter results">
+    <List searchBarPlaceholder="Filter results">
       <List.Section
         title={summary}
         subtitle={result.roundsFrom === "title" ? "Round count read from the title" : undefined}
